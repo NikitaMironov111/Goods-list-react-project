@@ -8,6 +8,6 @@ export interface IProduct {
   stock: string;
   brand: string;
   thumbnail: string;
-  images: string;
-  category: [];
+  images: [];
+  category: string;
 }

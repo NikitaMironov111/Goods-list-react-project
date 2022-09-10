@@ -1,12 +1,11 @@
 import React, { useContext } from 'react';
 import Context from '../context/context';
-import Registration from './Registration';
 
-const Modal = () => {
-  const { openModalLogin, setOpenModalLogin } = useContext(Context);
+const ModalImg = (imgUrl: string) => {
+  const { openModalImg, setOpenModalImg } = useContext(Context);
   return (
     <div
-      className={`modal fade ${openModalLogin && 'show d-block'}`}
+      className={`modal fade ${openModalImg && 'show d-block'}`}
       tabIndex={1}
     >
       <div className="modal-dialog">
@@ -18,29 +17,29 @@ const Modal = () => {
               className="btn-close"
               data-bs-dismiss="modal"
               aria-label="Close"
-              onClick={() => setOpenModalLogin(false)}
+              onClick={() => setOpenModalImg(false)}
             ></button>
           </div>
           <div className="modal-body">
-            <Registration />
+            <img src={imgUrl} alt="" />
           </div>
           <div className="modal-footer">
             <button
               type="button"
               className="btn btn-secondary"
               data-bs-dismiss="modal"
-              onClick={() => setOpenModalLogin(false)}
+              onClick={() => setOpenModalImg(false)}
             >
               Close
             </button>
           </div>
         </div>
         <div
-          className={`modal-backdrop fade ${openModalLogin && 'show d-block'}`}
+          className={`modal-backdrop fade ${openModalImg && 'show d-block'}`}
         ></div>
       </div>
     </div>
   );
 };
 
-export default Modal;
+export default ModalImg;

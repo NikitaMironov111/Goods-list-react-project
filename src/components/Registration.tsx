@@ -3,6 +3,8 @@ import { Link, useLocation } from 'react-router-dom';
 import http from './http';
 import Context from '../context/context';
 import { updateFunctionTypeNode } from 'typescript';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 const Registration = () => {
   const { setOpenModalLogin, setIsLoginUser } = useContext(Context);
@@ -10,6 +12,7 @@ const Registration = () => {
   const isLogin = path.pathname === '/login';
   const [login, setLogin] = useState('eve.holt@reqres.in');
   const [password, setPassword] = useState('cityslicka');
+  const [showPass, setShowPass] = useState(false);
 
   const authorization = async () => {
     const data = { email: login, password: password };
@@ -34,18 +37,39 @@ const Registration = () => {
   };
   return (
     <div className="row">
-      <input
-        className="mt-3 form-control"
-        placeholder="Input value"
-        value={login}
-        onChange={(event) => setLogin(event.target.value)}
-      />
-      <input
-        className="mt-3 form-control"
-        placeholder="Input password"
-        value={password}
-        onChange={(event) => setPassword(event.target.value)}
-      />
+      <div className="input-group mb-3">
+        <input
+          type="text"
+          className="form-control"
+          placeholder="Username"
+          aria-label="Username"
+          aria-describedby="basic-addon1"
+          value={login}
+          onChange={(event) => setLogin(event.target.value)}
+        />
+      </div>
+      <div className="input-group mb-3">
+        <input
+          type={showPass ? 'text' : 'password'}
+          className="form-control"
+          placeholder="Username"
+          aria-label="Username"
+          aria-describedby="basic-addon1"
+          value={password}
+          onChange={(event) => setPassword(event.target.value)}
+        />
+        <span
+          className="input-group-text"
+          id="basic-addon1"
+          onClick={() => setShowPass((prev) => !prev)}
+        >
+          {showPass ? (
+            <FontAwesomeIcon icon={faEyeSlash} />
+          ) : (
+            <FontAwesomeIcon icon={faEye} />
+          )}
+        </span>
+      </div>
       {isLogin ? (
         <div>
           <Link to="registration">Don't have a account? Registration!</Link>

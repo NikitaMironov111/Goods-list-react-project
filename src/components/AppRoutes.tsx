@@ -4,6 +4,7 @@ import Products from '../pages/Products';
 import Product from '../pages/Product';
 import LoginUser from '../pages/LoginUser';
 import Context from '../context/context';
+import ProductCategories from '../pages/ProductCategories';
 
 const AppRoutes = () => {
   const { isLoginUser } = useContext(Context);
@@ -12,12 +13,20 @@ const AppRoutes = () => {
     <Routes>
       <Route path="*" element={<Products></Products>}></Route>
       <Route path="products/:id" element={<Product></Product>}></Route>
+      <Route
+        path="products/category/:category"
+        element={<ProductCategories></ProductCategories>}
+      ></Route>
       <Route path="personalcabinet" element={<LoginUser></LoginUser>}></Route>
     </Routes>
   ) : (
     <Routes>
       <Route path="products" element={<Products></Products>}></Route>
       <Route path="products/:id" element={<Product></Product>}></Route>
+      <Route
+        path="products/category/:category"
+        element={<ProductCategories></ProductCategories>}
+      ></Route>
       <Route path="*" element={<Products></Products>}></Route>
     </Routes>
   );

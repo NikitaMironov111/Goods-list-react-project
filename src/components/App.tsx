@@ -8,6 +8,7 @@ import ModalLogin from './Modal';
 function App() {
   const [openModalLogin, setOpenModalLogin] = useState(false);
   const [isLoginUser, setIsLoginUser] = useState(false);
+  const [openModalImg, setOpenModalImg] = useState(false);
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
@@ -17,7 +18,14 @@ function App() {
 
   return (
     <Context.Provider
-      value={{ openModalLogin, setOpenModalLogin, isLoginUser, setIsLoginUser }}
+      value={{
+        openModalLogin,
+        setOpenModalLogin,
+        isLoginUser,
+        setIsLoginUser,
+        openModalImg,
+        setOpenModalImg,
+      }}
     >
       <div className="App">
         <ModalLogin />

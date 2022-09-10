@@ -1,35 +1,35 @@
-import React, { FC, useEffect, useState, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { IProduct } from '../components/Products/IProduct';
-import './Products.css';
+import { useParams } from 'react-router-dom';
 import http from '../components/http';
 import ProductCards from '../components/Products/ProductCards';
 import Search from '../components/Search';
 import { useSearch } from '../hooks/useSearch';
 
-const Products: FC = () => {
+const ProductCategories = () => {
+  const { category } = useParams();
   const [products, setProducts] = useState<IProduct[]>([]);
   const [search, setSearch] = useState('');
-
-  const getProducts = async () => {
+  const getProduct = async () => {
     try {
-      const products = await http.get('products?limit=28');
+      const products = await http.get(`products/category/${category}`);
       setProducts(products.data.products);
+      console.log(products);
     } catch (e) {
       console.log(e);
     }
   };
   useEffect(() => {
-    getProducts();
+    getProduct();
   }, []);
 
   const searchedProducts = useSearch(products, 'title', search);
-
   return (
-    <>
+    <div>
       <Search field={'Enter Product Title'} setSearch={setSearch}></Search>
       <ProductCards products={searchedProducts}></ProductCards>
-    </>
+    </div>
   );
 };
 
-export default Products;
+export default ProductCategories;

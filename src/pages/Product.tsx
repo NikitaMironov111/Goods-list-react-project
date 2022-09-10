@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { IProduct } from '../components/Products/IProduct';
 import { useParams } from 'react-router-dom';
 import http from '../components/http';
-import ProductCards from '../components/Products/ProductCards';
+import SingleProductCard from '../components/Products/SingleProductCard';
 
 const Product = () => {
   const { id } = useParams();
@@ -23,7 +23,7 @@ const Product = () => {
 
   return (
     <div>
-      <ProductCards products={product}></ProductCards>
+      <SingleProductCard products={product}></SingleProductCard>
     </div>
   );
 };

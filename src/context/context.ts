@@ -1,6 +1,6 @@
 import { createContext, SetStateAction, Dispatch } from 'react';
 
-const Context = createContext({} as IModalLogin & IAuth);
+const Context = createContext({} as IModalLogin & IAuth & IModalImg);
 
 export default Context;
 
@@ -12,4 +12,9 @@ interface IModalLogin {
 interface IAuth {
   isLoginUser: boolean;
   setIsLoginUser: Dispatch<SetStateAction<boolean>>;
+}
+
+interface IModalImg {
+  openModalImg: boolean;
+  setOpenModalImg:Dispatch<SetStateAction<boolean>>;
 }
