@@ -1,4 +1,4 @@
-export const initialUser = {
+export const initialProduct = {
     "id": 7,
     "email": "",
 	"first_name": "",

@@ -2,37 +2,36 @@ import React, { useState, useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import http from './http';
 import Context from '../context/context';
-import { updateFunctionTypeNode } from 'typescript';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 const Registration = () => {
   const { setOpenModalLogin, setIsLoginUser } = useContext(Context);
+
   const path = useLocation();
   const isLogin = path.pathname === '/login';
-  const [login, setLogin] = useState('eve.holt@reqres.in');
-  const [password, setPassword] = useState('cityslicka');
+  const [login, setLogin] = useState('kminchelle');
+  const [password, setPassword] = useState('0lelplR');
   const [showPass, setShowPass] = useState(false);
 
   const authorization = async () => {
-    const data = { email: login, password: password };
+    const data = { username: login, password: password };
     try {
       const authorizationData = await http.post(
-        `https://reqres.in/api/${isLogin ? 'login' : 'registration'}`,
+        'https://dummyjson.com/auth/login',
         data
       );
+      const userData = authorizationData.data;
       if (authorizationData.data.token) {
-        localStorage.setItem('token', authorizationData.data.token);
+        for (let key in userData) {
+          localStorage.setItem(`${key}`, `${userData[key]}`);
+        }
         setIsLoginUser(true);
         setOpenModalLogin(false);
-      }
-      if (authorizationData.data.email) {
-        alert('Congratulation, you are awesome!');
-        setLogin('');
-        setPassword('');
+        console.log(authorizationData.data);
       }
     } catch (error: any) {
-      alert(error.response.data.error);
+      alert(error);
     }
   };
   return (

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import Context from '../context/context';
 
-const ModalImg = (imgUrl: string) => {
+const ModalImg = ({ url }: { url: string }) => {
   const { openModalImg, setOpenModalImg } = useContext(Context);
   return (
     <div
@@ -11,7 +11,7 @@ const ModalImg = (imgUrl: string) => {
       <div className="modal-dialog">
         <div className="modal modal-content">
           <div className="modal-header">
-            <h5 className="modal-title">Login or Registration</h5>
+            <h5 className="modal-title">Photo</h5>
             <button
               type="button"
               className="btn-close"
@@ -21,7 +21,7 @@ const ModalImg = (imgUrl: string) => {
             ></button>
           </div>
           <div className="modal-body">
-            <img src={imgUrl} alt="" />
+            <img src={url} alt="" />
           </div>
           <div className="modal-footer">
             <button

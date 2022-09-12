@@ -18,3 +18,4 @@ interface IModalImg {
   openModalImg: boolean;
   setOpenModalImg:Dispatch<SetStateAction<boolean>>;
 }
+

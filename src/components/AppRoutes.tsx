@@ -1,8 +1,8 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Products from '../pages/Products';
 import Product from '../pages/Product';
-import LoginUser from '../pages/LoginUser';
+import PersonalCabinet from '../pages/PersonalCabinet';
 import Context from '../context/context';
 import ProductCategories from '../pages/ProductCategories';
 
@@ -17,7 +17,10 @@ const AppRoutes = () => {
         path="products/category/:category"
         element={<ProductCategories></ProductCategories>}
       ></Route>
-      <Route path="personalcabinet" element={<LoginUser></LoginUser>}></Route>
+      <Route
+        path="personalcabinet"
+        element={<PersonalCabinet></PersonalCabinet>}
+      ></Route>
     </Routes>
   ) : (
     <Routes>

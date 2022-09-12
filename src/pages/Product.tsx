@@ -11,7 +11,6 @@ const Product = () => {
   const getProduct = async () => {
     try {
       const product = await http.get(`products/${id}`);
-      console.log([product]);
       setProduct([product.data]);
     } catch (e) {
       console.log(e);

@@ -26,9 +26,13 @@ const NavBar = () => {
                   Personal Cabinet
                 </Link>
               </li>
-              <button className="btn btn-primary" onClick={() => logOut()}>
+              <Link
+                to="products"
+                className="btn btn-primary"
+                onClick={() => logOut()}
+              >
                 LogOut
-              </button>
+              </Link>
             </ul>
           </>
         ) : (

@@ -38,21 +38,15 @@ const SingleProductCard = ({ products }: { products: IProduct[] }) => {
                 <div className="card-img-container">
                   {product.images.length ? (
                     product.images.map((img) => (
-                      <div
-                      // onClick={() => {
-                      //   setOpenModalImg(true);
-                      //   setImgUrl(`${img}`);
-                      //   console.log(imgUrl);
-                      // }}
-                      >
+                      <div>
                         <img
                           src={img}
                           alt=""
                           style={{ width: '100%' }}
                           onClick={() => {
                             setOpenModalImg(true);
-                            setImgUrl(img.toString());
-                            console.log(imgUrl);
+                            setImgUrl(img);
+                            console.log(typeof imgUrl);
                           }}
                         />
                       </div>
@@ -76,7 +70,7 @@ const SingleProductCard = ({ products }: { products: IProduct[] }) => {
       ) : (
         <Spinner />
       )}
-      <ModalImg imgUrl={imgUrl}></ModalImg>
+      <ModalImg url={imgUrl}></ModalImg>
     </div>
   );
 };
