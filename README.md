@@ -1,4 +1,4 @@
-# User List Application
+# Goods List Application
 
 ## Available Scripts
 
